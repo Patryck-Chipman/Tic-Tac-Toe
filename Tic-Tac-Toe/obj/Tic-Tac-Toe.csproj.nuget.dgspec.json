@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/patryckchipman/Projects/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe.csproj": {}
+    "/Users/patryckchipman/Documents/GitHub/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe.csproj": {}
   },
   "projects": {
-    "/Users/patryckchipman/Projects/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe.csproj": {
+    "/Users/patryckchipman/Documents/GitHub/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/patryckchipman/Projects/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe.csproj",
+        "projectUniqueName": "/Users/patryckchipman/Documents/GitHub/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe.csproj",
         "projectName": "Tic-Tac-Toe",
-        "projectPath": "/Users/patryckchipman/Projects/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe.csproj",
+        "projectPath": "/Users/patryckchipman/Documents/GitHub/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe.csproj",
         "packagesPath": "/Users/patryckchipman/.nuget/packages/",
-        "outputPath": "/Users/patryckchipman/Projects/Tic-Tac-Toe/Tic-Tac-Toe/obj/",
+        "outputPath": "/Users/patryckchipman/Documents/GitHub/Tic-Tac-Toe/Tic-Tac-Toe/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/patryckchipman/.nuget/NuGet/NuGet.Config"
