@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Data.Common;
-
-namespace Tic_Tac_Toe
+﻿namespace Tic_Tac_Toe
 {
+    /// <summary>
+    /// Class <c>Oppenent</c> controls the AI opponent (Os) movemnt and brains
+    /// </summary>
 	public class Opponent
 	{
         private const int BOARD_SIZE = 3;
@@ -27,46 +26,42 @@ namespace Tic_Tac_Toe
 			_board = board;
 		}
 
+        /// <summary>
+        /// Method <c>MakeMove</c> deterimines where the oppoent should place it's next O
+        /// </summary>
 		public void MakeMove()
 		{
-            _winningPlays = new List<int[]>();
-            _priorityPlays = new List<int[]>();
-            _plays = new List<int[]>();
-            _boardArray = _board.GetBoard();
-			_verticals = new int[3][];
-            _horizontals = new int[3][];
-            _diagonals = new int[2][];
-
-            if (_boardArray[1][1] == NULL)
-			{
-				_board.SetPosition(1, 1, O);
-				return;
-			}
+            CreateLists();
 
 			CheckPlays();
 
 			AddPlays();
 
 			Random rand = new Random();
-            int index = 0;
+            int index;
+
+            // Worst/inital position
             var position = RandomPosition();
             while (!ValidPosition(position))
             {
                 position = RandomPosition();
             }
 
+            // Bad position
             if (_plays.Count != 0)
             {
                 index = rand.Next(_plays.Count);
                 position = _plays[index];
             }
 
+            // Good position
             if (_priorityPlays.Count != 0)
 			{
 				index = rand.Next(_priorityPlays.Count);
                 position = _priorityPlays[index];
             }
 
+            // Best position
             if (_winningPlays.Count != 0)
             {
                 position = _winningPlays[0];
@@ -78,14 +73,10 @@ namespace Tic_Tac_Toe
 		private void CheckPlays()
 		{
             for (int column = 0; column < BOARD_SIZE; column++)
-            {
                 CheckVertical(column);
-            }
 
             for (int row = 0; row < BOARD_SIZE; row++)
-            {
                 CheckHorizontal(row);
-            }
 
             CheckDiagonal(0, 1);
             CheckDiagonal(2, -1);
@@ -172,10 +163,18 @@ namespace Tic_Tac_Toe
 
                 if (columnArray[3] == 1 && columnArray.Contains(NULL))
                 {
-                    play[0] = Array.IndexOf(columnArray, NULL);
+                    for (int row = 0; row < BOARD_SIZE; row++)
+                    {
+                        if (columnArray[row] == NULL)
+                        {
+                            play[0] = row;
+                            play[1] = column;
+                            _plays.Add(play);
+                        }
+                    }
+                    /*play[0] = Array.IndexOf(columnArray, NULL);
                     play[1] = column;
-                    _plays.Add(play);
-                    continue;
+                    _plays.Add(play);*/
                 }
             }
         }
@@ -205,10 +204,18 @@ namespace Tic_Tac_Toe
 
                 if (rowArray[3] == 1 && rowArray.Contains(NULL))
                 {
-                    play[0] = row;
+                    for (int column = 0; column < BOARD_SIZE; column++)
+                    {
+                        if (rowArray[column] == NULL)
+                        {
+                            play[0] = row;
+                            play[1] = column;
+                            _plays.Add(play);
+                        }
+                    }
+                    /*play[0] = row;
                     play[1] = Array.IndexOf(rowArray, NULL);
-                    _plays.Add(play);
-                    continue;
+                    _plays.Add(play);*/
                 }
             }
         }
@@ -238,11 +245,19 @@ namespace Tic_Tac_Toe
 
             if (diagonalArray[3] == 1 && diagonalArray.Contains(NULL))
             {
-                int index = Array.IndexOf(diagonalArray, NULL);
+                for (int index = 0; index < BOARD_SIZE; index++)
+                {
+                    if (diagonalArray[index] == NULL)
+                    {
+                        play[0] = index;
+                        play[1] = startColumn + (direction * index);
+                        _plays.Add(play);
+                    }
+                }
+                /*int index = Array.IndexOf(diagonalArray, NULL);
                 play[0] = index;
                 play[1] = startColumn + (direction * index);
-                _plays.Add(play);
-                return;
+                _plays.Add(play);*/
             }
         }
 
@@ -259,6 +274,7 @@ namespace Tic_Tac_Toe
             return true;
         }
 
+        // Generate a random position
         private int[] RandomPosition()
         {
             Random random = new Random();
@@ -268,6 +284,7 @@ namespace Tic_Tac_Toe
             return position;
         }
 
+        // Determine if any positions are winnable
         private int Winnable(int[] array)
         {
             int oCount = 0;
@@ -277,6 +294,25 @@ namespace Tic_Tac_Toe
             }
             if (oCount == 2) return Array.IndexOf(array, NULL);
             return -1;
+        }
+
+        private void CreateLists()
+        {
+            _winningPlays = new List<int[]>();
+            _priorityPlays = new List<int[]>();
+            _plays = new List<int[]>();
+            _boardArray = _board.GetBoard();
+            _verticals = new int[3][];
+            _horizontals = new int[3][];
+            _diagonals = new int[2][];
+        }
+
+        private bool IsCorner(int[] position)
+        {
+            if (position[0] == position[1]) return true;
+            if (position[0] == BOARD_SIZE && position[1] == 0) return true;
+            if (position[0] == 0 && position[1] == BOARD_SIZE) return true;
+            return false;
         }
 	}
 }

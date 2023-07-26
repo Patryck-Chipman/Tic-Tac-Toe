@@ -1,9 +1,8 @@
-﻿using System;
-using System.Data.Common;
-using Tic_Tac_Toe;
-
-namespace Tic_Tac_Toe
+﻿namespace Tic_Tac_Toe
 {
+	/// <summary>
+	/// Class <c>Board</c> controls all aspects of the board (ie rendering and positions)
+	/// </summary>
 	public class Board
 	{
 		private const int BOARD_SIZE = 3;
@@ -27,6 +26,9 @@ namespace Tic_Tac_Toe
 			}
 		}
 
+		/// <summary>
+		/// Method <c>Print</c> renders the current board in ASCII text
+		/// </summary>
 		public void Print()
 		{
 			foreach (var array in _board)
@@ -44,13 +46,24 @@ namespace Tic_Tac_Toe
             }
 		}
 
+		/// <summary>
+		/// Method <c>SetPosition</c> sets the position on the board to a value (ie X or O)
+		/// </summary>
+		/// <param name="row"></param> the row on the table
+		/// <param name="column"></param> the column on the table
+		/// <param name="value"></param> the value to put (X = 1, O = 2)
 		public void SetPosition(int row, int column, int value)
 		{
 			_board[row][column] = value;
 		}
 
+		/// <summary>
+		/// Method <c>DetermineComplete</c> checks to see if a side has won or if there's a cats game
+		/// </summary>
+		/// <returns>true</returns> if the game is over
 		public bool DetermineComplete()
 		{
+			// Check all rows and columns ro see if the game has been won
             for (int i = 0; i < BOARD_SIZE; i++)
             {
 				for (int j = 0; j < BOARD_SIZE; j++)
@@ -70,6 +83,7 @@ namespace Tic_Tac_Toe
 			{
 				foreach (var value in array)
 				{
+					// Game board is not empty
 					if (value == 0) return false;
 				}
 			}
@@ -79,11 +93,21 @@ namespace Tic_Tac_Toe
 			return true;
 		}
 
+		/// <summary>
+		/// Method <c>GetBoard</c> returns the current game board
+		/// </summary>
+		/// <returns>current game board</returns>
 		public int[][] GetBoard()
 		{
 			return _board;
 		}
 
+		/// <summary>
+		/// Method <c>PositionTaken</c> checks if the given position is occupied
+		/// </summary>
+		/// <param name="row"></param> row to check
+		/// <param name="column"></param> column to check
+		/// <returns>true</returns> if the position is taken
 		public bool PositionTaken(int row, int column)
 		{
 			if (_board[row][column] == 0) return false;
