@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{EFE99B91-B876-4A91-BA7F-414E0E66DCC7}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tic-Tac-Toe/Opponent.cs">
+    <Files>
+      <File FileName="Tic-Tac-Toe/Program.cs" />
+      <File FileName="Tic-Tac-Toe/Board.cs" />
+      <File FileName="Tic-Tac-Toe/GameController.cs" />
+      <File FileName="Tic-Tac-Toe/Opponent.cs" Line="100" Column="14" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Tic-Tac-Toe" expanded="True">
+            <Node name="Tic-Tac-Toe" expanded="True">
+              <Node name="Opponent.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State name="__root__">
+          <Node name="Tic-Tac-Toe" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Tic-Tac-Toe PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
